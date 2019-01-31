@@ -1,0 +1,22 @@
+version: '3'
+services:
+   nginx:
+    image: nginx
+    restart: always
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/ghost/ghost.conf:/etc/nginx/conf.d/ghost.conf:z
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /opt/ghost/html:/var/lib/html:ro
+
+   ghost:
+    image: ghost
+    restart: always
+    container_name: ghost
+    ports:
+      - "2368:2368"
+    volumes:
+      - /opt/ghost/content:/var/lib/ghost/content:z
