@@ -2,8 +2,6 @@ ghost を docker-compose で動かす。
 1/30/2019
 
 以下の例では /opt/ghost にファイルを置いてます。
-
-...
 $ git clone https://github.com/amamitsutsuki/ghost.git
 
 docker のインストール
@@ -23,7 +21,3 @@ $ sudo add-apt-repository ppa:certbot/certbot$ sudo certbot certonly --agree-tos
 $ docker stop webserver; docker rm webserver
 
 $ docker-compose up -d
-
-こんな感じ。
-参照するため /etc/letsencrypt/live 及び archive 以下のファイルのオーナーを docker で実行するユーザーに変更するところだけ注意。
-安売り買ったはいいけど組み立て忘れてた自作の ubuntu desktop の上に docker を走らせてます。Steam 用にと作ったやつです。クラウド上ではありません。どうせ付けっぱなしにしてるので有効利用？アップタイムも気にしないしね。
