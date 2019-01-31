@@ -1,9 +1,11 @@
 version: '3'
 services:
    nginx:
-    image: nginx
+    image: nginx:latest
     restart: always
     container_name: nginx
+    networks:
+      - ghost
     ports:
       - "80:80"
       - "443:443"
@@ -13,10 +15,13 @@ services:
       - /opt/ghost/html:/var/lib/html:ro
 
    ghost:
-    image: ghost
+    image: ghost:latest
     restart: always
     container_name: ghost
-    ports:
-      - "2368:2368"
+    networks:
+      - ghost
     volumes:
       - /opt/ghost/content:/var/lib/ghost/content:z
+
+networks:
+  ghost:
